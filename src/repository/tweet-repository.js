@@ -2,6 +2,7 @@ const Tweet = require('../models/tweet');
 
 
 class TweetRepository {
+  
  
     async create (data){
          try {
@@ -43,6 +44,14 @@ class TweetRepository {
      } catch (error) {
         console.log(error)
      }
+    }
+    async getAll(offset,limit){
+         try {
+            const tweet= await Tweet.find().skip(offset).limit(limit);
+            return tweet
+         } catch (error) {
+            console.log(error)
+         }
     }
 }
 module.exports=TweetRepository
