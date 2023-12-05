@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
 
-const LikesSchema = new mongoose.Schema({
+const LikeSchema = new mongoose.Schema({
     onModel:{
-        type:string,
+        type:String,
         required:true,
         enum:['Tweet','Comment']
     },
@@ -14,10 +14,10 @@ const LikesSchema = new mongoose.Schema({
     user:{
         type:mongoose.Schema.Types.ObjectId,
         required:true,
-       
+        required: true,
     },
 
 },{timestamps:true})
 
-const Like = mongoose.model('Like',LikesSchema)
+const Like = mongoose.model('Like',LikeSchema)
 export default Like
