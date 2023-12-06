@@ -4,7 +4,7 @@ const tweetService =new TweetService()
 
 export const createTweet=async(req,res)=>{
     try {
-       const response =await tweetService.create(req.body)
+       const response =await tweetService.get(req.body)
        return res.status(201).json({
          success:true,
          message:'Successfully created a tweet',
@@ -19,4 +19,23 @@ export const createTweet=async(req,res)=>{
             err:error
           })
     }
+}
+
+export const getTweets=async(req,res)=>{
+  try {
+    const response =await tweetService.get(req.params.id)
+    return res.status(200).json({
+      success:true,
+      message:'Successfully fetched a tweet',
+      data:response,
+      err:{}
+    })
+ } catch (error) {
+     return res.status(500).json({
+         success:false,
+         message:'Something went wrong',
+         data:{},
+         err:error
+       })
+ }
 }
